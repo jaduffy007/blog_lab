@@ -2,13 +2,21 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define("Post", {
-    author: DataTypes.STRING,
-    content: DataTypes.TEXT,
-    AuthorId: DataTypes.INTEGER
+    title: {
+      type:DataTypes.STRING,
+      validate: {
+        len: [1,100]
+      }
+    },
+    content: DataTypes.STRING,
+    AuthorId: {
+      type:DataTypes.INTEGER,
+      foreignKey: true
+    },
   }, {
     classMethods: {
-      associate: function(models) {
-        // associations can be defined here
+      associate: function(db) {
+        Post.belongsTo(db.Author);
       }
     }
   });
