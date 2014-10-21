@@ -1,0 +1,35 @@
+"use strict";
+module.exports = {
+  up: function(migration, DataTypes, done) {
+    migration.createTable("Posts", {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
+      author: {
+        type: DataTypes.STRING
+      },
+      content: {
+        type: DataTypes.TEXT
+      },
+      AuthorId: {
+        type: DataTypes.INTEGER,
+        // foreignKey added by me
+        foreignKey:true
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE
+      }
+    }).done(done);
+  },
+  down: function(migration, DataTypes, done) {
+    migration.dropTable("Posts").done(done);
+  }
+};

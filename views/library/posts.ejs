@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Title</title>
+</head>
+<body>
+	<% allPosts.forEach(function(post){ %>
+		<!-- below builds the link into each post -->
+		<a href= '/posts/<%= post.id %>'>Show Post</a>
+		<p>  Posts by <%= post.author %></p>
+		<p> <%= post.content %></p>
+	<% }); %>
+
+<a href= "/">Go home</a>
+
+</body>
+</html>
